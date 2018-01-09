@@ -11,9 +11,13 @@ import UIKit
 class ToDoListViewController: UITableViewController {
 
     var itemArray = ["kajal","kiran","padhy"]
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      if  let items = defaults.array(forKey: "ToDoItemCell") as? [String]
+      {
+        itemArray = items
+       }
     }
     //MARK:- TableView DataSource Method
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +45,8 @@ class ToDoListViewController: UITableViewController {
         let action = UIAlertAction(title: "ADD NEW ITEM", style: .default) { (action) in
             
             self.itemArray.append(textField.text!)
+           self.defaults.set(self.itemArray, forKey: "ToDoListArray")
+            
             self.tableView.reloadData()
         }
       //adding text field to alert dialuge box
