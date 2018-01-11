@@ -12,6 +12,7 @@ class ToDoListViewController: UITableViewController {
 
     //var itemArray = ["kajal","kiran","padhy"]
     var itemArray = [Item]()
+     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +20,13 @@ class ToDoListViewController: UITableViewController {
         let newItem = Item()
         newItem.title = "kajal"
         itemArray.append(newItem)
-      if  let items = defaults.array(forKey: "ToDoItemCell") as? [Item]
-      {
-        itemArray = items
-       }
+        //loaded data from user defaults
+//      if  let items = defaults.array(forKey: "ToDoItemCell") as? [Item]
+//      {
+//        itemArray = items
+//       }
+        
+        loadData()
     }
     //MARK:- TableView DataSource Method
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,7 +48,8 @@ class ToDoListViewController: UITableViewController {
 //           tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
 //        }
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        tableView.reloadData()
+        //tableView.reloadData()
+        saveData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
 //MARK:- Add new Item in List
@@ -56,9 +61,9 @@ class ToDoListViewController: UITableViewController {
             let newItem = Item()
             newItem.title = textField.text!
             self.itemArray.append(newItem)
-           self.defaults.set(self.itemArray, forKey: "ToDoListArray")
-            
-            self.tableView.reloadData()
+          // self.defaults.set(self.itemArray, forKey: "ToDoListArray")
+          //  self.tableView.reloadData()
+            self.saveData()
         }
       //adding text field to alert dialuge box
         alert.addTextField { (alertTextField) in
@@ -69,6 +74,32 @@ class ToDoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-
+    //MARK:- Manipulation data
+    func saveData()
+    {
+      let encoder = PropertyListEncoder()
+        do{
+            let data = try encoder.encode(itemArray)
+        try data.write(to: dataFilePath!)
+        }
+        catch{
+            print(error)
+        }
+        tableView.reloadData()
+    }
+     func loadData()
+     {
+        if let data = try? Data(contentsOf: dataFilePath!)
+        {
+            let decoder = PropertyListDecoder()
+            do{
+            itemArray =  try decoder.decode([Item].self, from: data)
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
 }
+
 
