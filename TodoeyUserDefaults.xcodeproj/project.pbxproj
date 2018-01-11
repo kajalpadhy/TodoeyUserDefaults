@@ -13,6 +13,7 @@
 		9E012A1E20055FD8005A99F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E012A1D20055FD8005A99F9 /* Assets.xcassets */; };
 		9E012A2120055FD8005A99F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E012A1F20055FD8005A99F9 /* LaunchScreen.storyboard */; };
 		9EBD530C20082249001B5FB3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD530A20082249001B5FB3 /* Model.xcdatamodeld */; };
+		9EBD530E20082319001B5FB3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD530D20082319001B5FB3 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9E012A2020055FD8005A99F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E012A2220055FD8005A99F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EBD530B20082249001B5FB3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9EBD530D20082319001B5FB3 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = "../../../../../.Trash/TodoeyCoreData/TodoeyCoreData/Data Model/Item.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		9E012A2A20057C98005A99F9 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				9EBD530D20082319001B5FB3 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EBD530E20082319001B5FB3 /* Item.swift in Sources */,
 				9E012A1920055FD7005A99F9 /* ToDoListViewController.swift in Sources */,
 				9E012A1720055FD7005A99F9 /* AppDelegate.swift in Sources */,
 				9EBD530C20082249001B5FB3 /* Model.xcdatamodeld in Sources */,
